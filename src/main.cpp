@@ -8,7 +8,7 @@ const char* ssid = "THN_CAR";
 const char* password = "THN_CAR1";
 
 int IN1 = D1;
-int IN2 = D2;
+int IN2 = D0;
 int ENA = D2;
 
 int IN3 = D6;
@@ -64,12 +64,21 @@ void setup() {
   server.on("/stop", HTTP_POST, handleStop);
   server.on("/speed", HTTP_POST, handleSpeed);
   server.begin();
+  stopMovement();
 }
 
 void loop() {
-  //  spinForwardLeftMotor(speed);
-  //   spinForwardRightMotor(speed);
-  //   delay(2000);
+  // speed = 180;
+  // moveForward(speed);
+  // delay(2000);
+  // stopMovement();
+  // delay(2000);
+  // moveBackward(speed);
+  // delay(2000);
+  // stopMovement();
+  // delay(2000);
+
+
   //   stopLeftMotor();
   //   stopRightMotor();
   //   delay(2000);
@@ -79,19 +88,20 @@ void loop() {
   //   stopLeftMotor();
   //   stopRightMotor();
   //   delay(2000);
+  // server.handleClient();
   server.handleClient();
 }
 
 
 void spinForwardLeftMotor(int speed) {
-  digitalWrite(IN1, HIGH);
-  digitalWrite(IN2, LOW);
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
   analogWrite(ENA, speed);
 }
 
 void spinBackwardLeftMotor(int speed) {
-  digitalWrite(IN1, LOW);
-  digitalWrite(IN2, HIGH);
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
   analogWrite(ENA, speed);
 }
 
