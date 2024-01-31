@@ -1,0 +1,10 @@
+{
+  "editor.formatOnSave": true,
+  "[cpp]": {
+    "editor.wordBasedSuggestions": false,
+    "editor.suggest.insertMode": "replace",
+    "editor.semanticHighlighting.enabled": true,
+    "editor.quickSuggestions": true,
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  }
+}
