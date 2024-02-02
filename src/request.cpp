@@ -74,9 +74,12 @@ void handleGetStatus() {
   String status = "{";
   status += "\"currentStatus\":{";
   status += "\"leftMotor\":\"" + String(LEFT_MOTOR_STATE) + "\",\"rightMotor\":\"" + String(RIGHT_MOTOR_STATE) + "\",\"speed\":\"" + String(SPEED);
-  status += "\"}, ";
+  status += "\"},";
   status += "\"motorStates\":{";
   status += "\"forward\":\"" + String(MOTOR_FORWARD) + "\",\"backward\":\"" + String(MOTOR_BACKWARD) + "\",\"stop\":\"" + String(MOTOR_STOP);
+  status += "\"},";
+  status += "\"motorSpeeds\":{";
+  status += "\"minSpeed\":\"" + String(MIN_SPEED) + "\",\"maxSpeed\":\"" + String(MAX_SPEED);
   status += "\"}";
   status += "}";
 

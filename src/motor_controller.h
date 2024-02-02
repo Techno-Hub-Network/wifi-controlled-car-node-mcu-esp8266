@@ -5,7 +5,7 @@
 #include <ESP8266WiFi.h>
 
 extern int IN1, IN2, ENA, IN3, IN4, ENB;
-extern const int MOTOR_STOP, MOTOR_FORWARD, MOTOR_BACKWARD;
+extern const int MOTOR_STOP, MOTOR_FORWARD, MOTOR_BACKWARD, MIN_SPEED, MAX_SPEED;
 extern int SPEED, LEFT_MOTOR_STATE, RIGHT_MOTOR_STATE;
 
 void setupMotorController();
