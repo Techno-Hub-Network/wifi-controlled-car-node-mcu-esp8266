@@ -11,7 +11,7 @@ int ENB = D3;
 const int MOTOR_STOP = 0;
 const int MOTOR_FORWARD = 1;
 const int MOTOR_BACKWARD = 2;
-const int MIN_SPEED = 90;
+const int MIN_SPEED = 110;
 const int MAX_SPEED = 255;
 
 int SPEED = MIN_SPEED;
