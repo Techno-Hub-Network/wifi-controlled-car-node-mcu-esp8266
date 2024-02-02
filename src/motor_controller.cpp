@@ -14,7 +14,7 @@ const int MOTOR_BACKWARD = 2;
 const int MIN_SPEED = 90;
 const int MAX_SPEED = 255;
 
-int SPEED = 0;
+int SPEED = MIN_SPEED;
 
 int LEFT_MOTOR_STATE = MOTOR_STOP;
 int RIGHT_MOTOR_STATE = MOTOR_STOP;
@@ -97,6 +97,7 @@ void stopRightMotor() {
 void stopMovement() {
   stopLeftMotor();
   stopRightMotor();
+  setSpeed(MIN_SPEED);
 }
 
 void setMoveForward(int newSpeed) {
@@ -113,7 +114,7 @@ void setMoveBackward(int newSpeed) {
 
 void setTurnLeft(int newSpeed) {
   if (LEFT_MOTOR_STATE == MOTOR_STOP) {
-    LEFT_MOTOR_STATE = MOTOR_BACKWARD;
+    LEFT_MOTOR_STATE = MOTOR_FORWARD;
   }
   RIGHT_MOTOR_STATE = MOTOR_STOP;
   setSpeed(newSpeed);
@@ -121,7 +122,7 @@ void setTurnLeft(int newSpeed) {
 
 void setTurnRight(int newSpeed) {
   if (RIGHT_MOTOR_STATE == MOTOR_STOP) {
-    RIGHT_MOTOR_STATE = MOTOR_BACKWARD;
+    RIGHT_MOTOR_STATE = MOTOR_FORWARD;
   }
   LEFT_MOTOR_STATE = MOTOR_STOP;
   setSpeed(newSpeed);
