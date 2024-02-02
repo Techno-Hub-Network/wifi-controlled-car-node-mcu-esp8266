@@ -11,8 +11,10 @@ int ENB = D3;
 const int MOTOR_STOP = 0;
 const int MOTOR_FORWARD = 1;
 const int MOTOR_BACKWARD = 2;
+const int MIN_SPEED = 90;
+const int MAX_SPEED = 255;
 
-int speed = 0;
+int SPEED = 0;
 
 int LEFT_MOTOR_STATE = MOTOR_STOP;
 int RIGHT_MOTOR_STATE = MOTOR_STOP;
@@ -32,12 +34,12 @@ void spinLeftMotor() {
   if (LEFT_MOTOR_STATE == MOTOR_FORWARD) {
     digitalWrite(IN1, LOW);
     digitalWrite(IN2, HIGH);
-    analogWrite(ENA, speed);
+    analogWrite(ENA, SPEED);
   }
   else if (LEFT_MOTOR_STATE == MOTOR_BACKWARD) {
     digitalWrite(IN1, HIGH);
     digitalWrite(IN2, LOW);
-    analogWrite(ENA, speed);
+    analogWrite(ENA, SPEED);
   }
   else {
     stopLeftMotor();
@@ -46,24 +48,24 @@ void spinLeftMotor() {
 
 void setForwardLeftMotor(int newSpeed) {
   LEFT_MOTOR_STATE = MOTOR_FORWARD;
-  speed = newSpeed;
+  setSpeed(newSpeed);
 }
 
 void setBackwardLeftMotor(int newSpeed) {
   LEFT_MOTOR_STATE = MOTOR_BACKWARD;
-  speed = newSpeed;
+  setSpeed(newSpeed);
 }
 
 void spinRightMotor() {
   if (RIGHT_MOTOR_STATE == MOTOR_FORWARD) {
     digitalWrite(IN3, HIGH);
     digitalWrite(IN4, LOW);
-    analogWrite(ENB, speed);
+    analogWrite(ENB, SPEED);
   }
   else if (RIGHT_MOTOR_STATE == MOTOR_BACKWARD) {
     digitalWrite(IN3, LOW);
     digitalWrite(IN4, HIGH);
-    analogWrite(ENB, speed);
+    analogWrite(ENB, SPEED);
   }
   else {
     stopRightMotor();
@@ -72,12 +74,12 @@ void spinRightMotor() {
 
 void setForwardRightMotor(int newSpeed) {
   RIGHT_MOTOR_STATE = MOTOR_FORWARD;
-  speed = newSpeed;
+  setSpeed(newSpeed);
 }
 
 void setBackwardRightMotor(int newSpeed) {
   RIGHT_MOTOR_STATE = MOTOR_BACKWARD;
-  speed = newSpeed;
+  setSpeed(newSpeed);
 }
 
 void stopLeftMotor() {
@@ -100,27 +102,35 @@ void stopMovement() {
 void setMoveForward(int newSpeed) {
   LEFT_MOTOR_STATE = MOTOR_FORWARD;
   RIGHT_MOTOR_STATE = MOTOR_FORWARD;
-  speed = newSpeed;
+  setSpeed(newSpeed);
 }
 
 void setMoveBackward(int newSpeed) {
   LEFT_MOTOR_STATE = MOTOR_BACKWARD;
   RIGHT_MOTOR_STATE = MOTOR_BACKWARD;
-  speed = newSpeed;
+  setSpeed(newSpeed);
 }
 
 void setTurnLeft(int newSpeed) {
   LEFT_MOTOR_STATE = MOTOR_BACKWARD;
   RIGHT_MOTOR_STATE = MOTOR_FORWARD;
-  speed = newSpeed;
+  setSpeed(newSpeed);
 }
 
 void setTurnRight(int newSpeed) {
   LEFT_MOTOR_STATE = MOTOR_FORWARD;
   RIGHT_MOTOR_STATE = MOTOR_BACKWARD;
-  speed = newSpeed;
+  setSpeed(newSpeed);
 }
 
 void setSpeed(int newSpeed) {
-  speed = newSpeed;
+  if (newSpeed <= MIN_SPEED) {
+    SPEED = MIN_SPEED;
+  }
+  else if (newSpeed >= MAX_SPEED) {
+    SPEED = MAX_SPEED;
+  }
+  else {
+    SPEED = newSpeed;
+  }
 }

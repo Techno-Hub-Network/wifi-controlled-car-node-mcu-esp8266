@@ -6,7 +6,7 @@
 
 extern int IN1, IN2, ENA, IN3, IN4, ENB;
 extern const int MOTOR_STOP, MOTOR_FORWARD, MOTOR_BACKWARD;
-extern int speed, LEFT_MOTOR_STATE, RIGHT_MOTOR_STATE;
+extern int SPEED, LEFT_MOTOR_STATE, RIGHT_MOTOR_STATE;
 
 void setupMotorController();
 void spinLeftMotor();

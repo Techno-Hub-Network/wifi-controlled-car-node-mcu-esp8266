@@ -16,8 +16,9 @@ void handleRoot() {
 
 void handlePostRequests(void (*callbackFunction)(int)) {
   if (server.hasArg("speed")) {
-    speed = server.arg("speed").toInt();
-    callbackFunction(speed);
+    const int newSpeed = server.arg("speed").toInt();
+    setSpeed(newSpeed);
+    callbackFunction(newSpeed);
   }
 
   server.send(200, "text/plain", "Ok");
@@ -46,17 +47,8 @@ void handleStop() {
 
 void handleSpeed() {
   if (server.hasArg("speed")) {
-    int speed = server.arg("speed").toInt();
-    if (speed > 255) {
-      setSpeed(255);
-    }
-    else if (speed <= 0) {
-      setSpeed(0);
-      stopMovement();
-    }
-    else {
-      setSpeed(speed);
-    }
+    int newSpeed = server.arg("speed").toInt();
+    setSpeed(newSpeed);
   }
 
   server.send(200, "text/plain", "Ok");
@@ -81,7 +73,7 @@ void handleClient() {
 void handleGetStatus() {
   String status = "{";
   status += "\"currentStatus\":{";
-  status += "\"leftMotor\":\"" + String(LEFT_MOTOR_STATE) + "\",\"rightMotor\":\"" + String(RIGHT_MOTOR_STATE) + "\",\"speed\":\"" + String(speed);
+  status += "\"leftMotor\":\"" + String(LEFT_MOTOR_STATE) + "\",\"rightMotor\":\"" + String(RIGHT_MOTOR_STATE) + "\",\"speed\":\"" + String(SPEED);
   status += "\"}, ";
   status += "\"motorStates\":{";
   status += "\"forward\":\"" + String(MOTOR_FORWARD) + "\",\"backward\":\"" + String(MOTOR_BACKWARD) + "\",\"stop\":\"" + String(MOTOR_STOP);
