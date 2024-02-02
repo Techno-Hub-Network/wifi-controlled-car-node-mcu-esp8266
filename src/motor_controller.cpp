@@ -44,14 +44,14 @@ void spinLeftMotor() {
   }
 }
 
-void setForwardLeftMotor(int speed) {
+void setForwardLeftMotor(int newSpeed) {
   LEFT_MOTOR_STATE = MOTOR_FORWARD;
-  speed = speed;
+  speed = newSpeed;
 }
 
-void setBackwardLeftMotor(int speed) {
+void setBackwardLeftMotor(int newSpeed) {
   LEFT_MOTOR_STATE = MOTOR_BACKWARD;
-  speed = speed;
+  speed = newSpeed;
 }
 
 void spinRightMotor() {
@@ -70,14 +70,14 @@ void spinRightMotor() {
   }
 }
 
-void setForwardRightMotor(int speed) {
+void setForwardRightMotor(int newSpeed) {
   RIGHT_MOTOR_STATE = MOTOR_FORWARD;
-  speed = speed;
+  speed = newSpeed;
 }
 
-void setBackwardRightMotor(int speed) {
+void setBackwardRightMotor(int newSpeed) {
   RIGHT_MOTOR_STATE = MOTOR_BACKWARD;
-  speed = speed;
+  speed = newSpeed;
 }
 
 void stopLeftMotor() {
@@ -97,30 +97,30 @@ void stopMovement() {
   stopRightMotor();
 }
 
-void setMoveForward(int speed) {
+void setMoveForward(int newSpeed) {
   LEFT_MOTOR_STATE = MOTOR_FORWARD;
   RIGHT_MOTOR_STATE = MOTOR_FORWARD;
-  speed = speed;
+  speed = newSpeed;
 }
 
-void setMoveBackward(int speed) {
+void setMoveBackward(int newSpeed) {
   LEFT_MOTOR_STATE = MOTOR_BACKWARD;
   RIGHT_MOTOR_STATE = MOTOR_BACKWARD;
-  speed = speed;
+  speed = newSpeed;
 }
 
-void setTurnLeft(int speed) {
+void setTurnLeft(int newSpeed) {
   LEFT_MOTOR_STATE = MOTOR_BACKWARD;
   RIGHT_MOTOR_STATE = MOTOR_FORWARD;
-  speed = speed;
+  speed = newSpeed;
 }
 
-void setTurnRight(int speed) {
+void setTurnRight(int newSpeed) {
   LEFT_MOTOR_STATE = MOTOR_FORWARD;
   RIGHT_MOTOR_STATE = MOTOR_BACKWARD;
-  speed = speed;
+  speed = newSpeed;
 }
 
-void setSpeed(int speed) {
-  speed = speed;
+void setSpeed(int newSpeed) {
+  speed = newSpeed;
 }

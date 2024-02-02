@@ -18,5 +18,6 @@ void handleStop();
 void handleSpeed();
 void initializeServer();
 void handleClient();
+void handleGetStatus();
 
 #endif // REQUEST_H

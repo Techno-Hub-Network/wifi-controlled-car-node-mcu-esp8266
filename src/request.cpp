@@ -70,9 +70,23 @@ void initializeServer() {
   server.on("/right", HTTP_POST, handleRight);
   server.on("/stop", HTTP_POST, handleStop);
   server.on("/speed", HTTP_POST, handleSpeed);
+  server.on("/status", HTTP_GET, handleGetStatus);
   server.begin();
 }
 
 void handleClient() {
   server.handleClient();
+}
+
+void handleGetStatus() {
+  String status = "{";
+  status += "\"currentStatus\":{";
+  status += "\"leftMotor\":\"" + String(LEFT_MOTOR_STATE) + "\",\"rightMotor\":\"" + String(RIGHT_MOTOR_STATE) + "\",\"speed\":\"" + String(speed);
+  status += "\"}, ";
+  status += "\"motorStates\":{";
+  status += "\"forward\":\"" + String(MOTOR_FORWARD) + "\",\"backward\":\"" + String(MOTOR_BACKWARD) + "\",\"stop\":\"" + String(MOTOR_STOP);
+  status += "\"}";
+  status += "}";
+
+  server.send(200, "application/json", status);
 }
