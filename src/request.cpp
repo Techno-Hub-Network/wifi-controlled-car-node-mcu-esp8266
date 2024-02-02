@@ -49,6 +49,9 @@ void handleSpeed() {
   if (server.hasArg("speed")) {
     int newSpeed = server.arg("speed").toInt();
     setSpeed(newSpeed);
+    if (SPEED == MIN_SPEED) {
+      stopMovement();
+    }
   }
 
   server.send(200, "text/plain", "Ok");

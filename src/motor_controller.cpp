@@ -112,14 +112,18 @@ void setMoveBackward(int newSpeed) {
 }
 
 void setTurnLeft(int newSpeed) {
-  LEFT_MOTOR_STATE = MOTOR_BACKWARD;
-  RIGHT_MOTOR_STATE = MOTOR_FORWARD;
+  if (LEFT_MOTOR_STATE == MOTOR_STOP) {
+    LEFT_MOTOR_STATE = MOTOR_BACKWARD;
+  }
+  RIGHT_MOTOR_STATE = MOTOR_STOP;
   setSpeed(newSpeed);
 }
 
 void setTurnRight(int newSpeed) {
-  LEFT_MOTOR_STATE = MOTOR_FORWARD;
-  RIGHT_MOTOR_STATE = MOTOR_BACKWARD;
+  if (RIGHT_MOTOR_STATE == MOTOR_STOP) {
+    RIGHT_MOTOR_STATE = MOTOR_BACKWARD;
+  }
+  LEFT_MOTOR_STATE = MOTOR_STOP;
   setSpeed(newSpeed);
 }
 
