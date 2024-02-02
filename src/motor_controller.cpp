@@ -1,5 +1,4 @@
-#include <Arduino.h>
-#include <ESP8266WiFi.h>
+#include "motor_controller.h"
 
 int IN1 = D1;
 int IN2 = D2;
@@ -9,7 +8,6 @@ int IN3 = D5;
 int IN4 = D4;
 int ENB = D3;
 
-
 const int MOTOR_STOP = 0;
 const int MOTOR_FORWARD = 1;
 const int MOTOR_BACKWARD = 2;
@@ -18,22 +16,6 @@ int speed = 0;
 
 int LEFT_MOTOR_STATE = MOTOR_STOP;
 int RIGHT_MOTOR_STATE = MOTOR_STOP;
-
-void setupMotorController();
-void spinLeftMotor();
-void setForwardLeftMotor(int speed);
-void setBackwardLeftMotor(int speed);
-void spinRightMotor();
-void setForwardRightMotor(int speed);
-void setBackwardRightMotor(int speed);
-void stopLeftMotor();
-void stopRightMotor();
-void stopMovement();
-void setMoveForward(int speed);
-void setMoveBackward(int speed);
-void setTurnLeft(int speed);
-void setTurnRight(int speed);
-void setSpeed(int speed);
 
 void setupMotorController() {
   pinMode(IN1, OUTPUT);
@@ -139,6 +121,6 @@ void setTurnRight(int speed) {
   speed = speed;
 }
 
-void setSPeed(int speed) {
+void setSpeed(int speed) {
   speed = speed;
 }

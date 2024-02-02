@@ -1,20 +1,6 @@
-#include <Arduino.h>
-#include <ESP8266WiFi.h>
-#include <ESP8266WebServer.h>
-#include <FS.h>
-#include <LittleFS.h>
-#include "motor.controller.cpp"
+#include "request.h"
 
 ESP8266WebServer server(80);
-
-void handleRoot();
-void handleForward();
-void handlePostRequests(void (*callbackFunction)(int));
-void handleBackward();
-void handleLeft();
-void handleRight();
-void handleStop();
-void handleSpeed();
 
 void handleRoot() {
   File file = LittleFS.open("/index.html", "r");
@@ -71,4 +57,19 @@ void handleSpeed() {
   }
 
   server.send(200, "text/plain", "Ok");
+}
+
+void initializeServer() {
+  server.on("/", HTTP_GET, handleRoot);
+  server.on("/forward", HTTP_POST, handleForward);
+  server.on("/backward", HTTP_POST, handleBackward);
+  server.on("/left", HTTP_POST, handleLeft);
+  server.on("/right", HTTP_POST, handleRight);
+  server.on("/stop", HTTP_POST, handleStop);
+  server.on("/speed", HTTP_POST, handleSpeed);
+  server.begin();
+}
+
+void handleClient() {
+  server.handleClient();
 }

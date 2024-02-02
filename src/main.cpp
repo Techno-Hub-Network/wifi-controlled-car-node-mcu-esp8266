@@ -3,7 +3,9 @@
 #include <ESP8266WebServer.h>
 #include <FS.h>
 #include <LittleFS.h>
-#include "request.cpp"
+#include "request.h"
+#include "motor_controller.h"
+
 // #include "motor.controller.cpp"
 
 const char* ssid = "THN_CAR";
@@ -23,19 +25,12 @@ void setup() {
 
   Serial.println("Hotspot IP address: " + WiFi.softAPIP().toString());
 
-  server.on("/", HTTP_GET, handleRoot);
-  server.on("/forward", HTTP_POST, handleForward);
-  server.on("/backward", HTTP_POST, handleBackward);
-  server.on("/left", HTTP_POST, handleLeft);
-  server.on("/right", HTTP_POST, handleRight);
-  server.on("/stop", HTTP_POST, handleStop);
-  server.on("/speed", HTTP_POST, handleSpeed);
-  server.begin();
+  initializeServer();
   stopMovement();
 }
 
 void loop() {
-  server.handleClient();
+  handleClient();
   spinLeftMotor();
   spinRightMotor();
   delay(100);
