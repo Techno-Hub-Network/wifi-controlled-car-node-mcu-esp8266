@@ -51,6 +51,8 @@ void handleSpeed() {
     setSpeed(newSpeed);
     if (SPEED == MIN_SPEED) {
       stopMovement();
+    } if (SPEED > MIN_SPEED && LEFT_MOTOR_STATE == MOTOR_STOP && RIGHT_MOTOR_STATE == MOTOR_STOP) {
+      setMoveForward(SPEED);
     }
   }
 
