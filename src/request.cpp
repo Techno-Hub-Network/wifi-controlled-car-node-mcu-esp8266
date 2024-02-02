@@ -54,6 +54,9 @@ void handleSpeed() {
       setSpeed(0);
       stopMovement();
     }
+    else {
+      setSpeed(speed);
+    }
   }
 
   server.send(200, "text/plain", "Ok");
