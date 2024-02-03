@@ -36,6 +36,11 @@ void handleStop() {
   server.send(200, "text/plain", "Ok");
 }
 
+void handlePause() {
+  pauseMovement();
+  server.send(200, "text/plain", "Ok");
+}
+
 void handleSpeed() {
   if (server.hasArg("speed")) {
     int newSpeed = server.arg("speed").toInt();
@@ -57,7 +62,8 @@ void initializeServer() {
   server.on("/backward", HTTP_POST, handleBackward);
   server.on("/left", HTTP_POST, handleLeft);
   server.on("/right", HTTP_POST, handleRight);
-  server.on("/stop", HTTP_POST, handleStop);
+  server.on("/stop", HTTP_GET, handleStop);
+  server.on("/pause", HTTP_GET, handlePause);
   server.on("/speed", HTTP_POST, handleSpeed);
   server.on("/status", HTTP_GET, handleGetStatus);
   server.begin();

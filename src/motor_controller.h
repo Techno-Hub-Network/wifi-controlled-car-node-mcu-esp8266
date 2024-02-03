@@ -28,6 +28,8 @@ void stopRightMotor();
 
 void stopMovement();
 
+void pauseMovement();
+
 void setMoveForward(int newSpeed);
 
 void setMoveBackward(int newSpeed);

@@ -23,6 +23,8 @@ void handleRight();
 
 void handleStop();
 
+void handlePause();
+
 void handleSpeed();
 
 void initializeServer();

@@ -90,9 +90,13 @@ void stopRightMotor() {
   RIGHT_MOTOR_STATE = MOTOR_STOP;
 }
 
-void stopMovement() {
+void pauseMovement() {
   stopLeftMotor();
   stopRightMotor();
+}
+
+void stopMovement() {
+  pauseMovement();
   setSpeed(MIN_SPEED);
 }
 
