@@ -35,13 +35,11 @@ void spinLeftMotor() {
     digitalWrite(IN1, LOW);
     digitalWrite(IN2, HIGH);
     analogWrite(ENA, SPEED);
-  }
-  else if (LEFT_MOTOR_STATE == MOTOR_BACKWARD) {
+  } else if (LEFT_MOTOR_STATE == MOTOR_BACKWARD) {
     digitalWrite(IN1, HIGH);
     digitalWrite(IN2, LOW);
     analogWrite(ENA, SPEED);
-  }
-  else {
+  } else {
     stopLeftMotor();
   }
 }
@@ -61,13 +59,11 @@ void spinRightMotor() {
     digitalWrite(IN3, HIGH);
     digitalWrite(IN4, LOW);
     analogWrite(ENB, SPEED);
-  }
-  else if (RIGHT_MOTOR_STATE == MOTOR_BACKWARD) {
+  } else if (RIGHT_MOTOR_STATE == MOTOR_BACKWARD) {
     digitalWrite(IN3, LOW);
     digitalWrite(IN4, HIGH);
     analogWrite(ENB, SPEED);
-  }
-  else {
+  } else {
     stopRightMotor();
   }
 }
@@ -115,8 +111,7 @@ void setMoveBackward(int newSpeed) {
 void setTurnLeft(int newSpeed) {
   if (LEFT_MOTOR_STATE == MOTOR_STOP || LEFT_MOTOR_STATE == MOTOR_FORWARD) {
     LEFT_MOTOR_STATE = MOTOR_BACKWARD;
-  }
-  else {
+  } else {
     LEFT_MOTOR_STATE = MOTOR_FORWARD;
   }
   RIGHT_MOTOR_STATE = MOTOR_STOP;
@@ -126,8 +121,7 @@ void setTurnLeft(int newSpeed) {
 void setTurnRight(int newSpeed) {
   if (RIGHT_MOTOR_STATE == MOTOR_STOP || RIGHT_MOTOR_STATE == MOTOR_FORWARD) {
     RIGHT_MOTOR_STATE = MOTOR_BACKWARD;
-  }
-  else {
+  } else {
     RIGHT_MOTOR_STATE = MOTOR_FORWARD;
   }
   LEFT_MOTOR_STATE = MOTOR_STOP;
@@ -137,11 +131,9 @@ void setTurnRight(int newSpeed) {
 void setSpeed(int newSpeed) {
   if (newSpeed <= MIN_SPEED) {
     SPEED = MIN_SPEED;
-  }
-  else if (newSpeed >= MAX_SPEED) {
+  } else if (newSpeed >= MAX_SPEED) {
     SPEED = MAX_SPEED;
-  }
-  else {
+  } else {
     SPEED = newSpeed;
   }
 }

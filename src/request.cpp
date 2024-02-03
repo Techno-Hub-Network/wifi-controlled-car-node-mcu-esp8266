@@ -8,8 +8,7 @@ void handleRoot() {
   if (file) {
     server.streamFile(file, "text/html");
     file.close();
-  }
-  else {
+  } else {
     server.send(404, "text/plain", "File Not Found");
   }
 }
@@ -24,21 +23,13 @@ void handlePostRequests(void (*callbackFunction)(int)) {
   server.send(200, "text/plain", "Ok");
 }
 
-void handleForward() {
-  handlePostRequests(setMoveForward);
-}
+void handleForward() { handlePostRequests(setMoveForward); }
 
-void handleBackward() {
-  handlePostRequests(setMoveBackward);
-}
+void handleBackward() { handlePostRequests(setMoveBackward); }
 
-void handleLeft() {
-  handlePostRequests(setTurnLeft);
-}
+void handleLeft() { handlePostRequests(setTurnLeft); }
 
-void handleRight() {
-  handlePostRequests(setTurnRight);
-}
+void handleRight() { handlePostRequests(setTurnRight); }
 
 void handleStop() {
   stopMovement();
@@ -51,7 +42,8 @@ void handleSpeed() {
     setSpeed(newSpeed);
     if (SPEED == MIN_SPEED) {
       stopMovement();
-    } if (SPEED > MIN_SPEED && LEFT_MOTOR_STATE == MOTOR_STOP && RIGHT_MOTOR_STATE == MOTOR_STOP) {
+    }
+    if (SPEED > MIN_SPEED && LEFT_MOTOR_STATE == MOTOR_STOP && RIGHT_MOTOR_STATE == MOTOR_STOP) {
       setMoveForward(SPEED);
     }
   }
@@ -71,17 +63,17 @@ void initializeServer() {
   server.begin();
 }
 
-void handleClient() {
-  server.handleClient();
-}
+void handleClient() { server.handleClient(); }
 
 void handleGetStatus() {
   String status = "{";
   status += "\"currentStatus\":{";
-  status += "\"leftMotor\":\"" + String(LEFT_MOTOR_STATE) + "\",\"rightMotor\":\"" + String(RIGHT_MOTOR_STATE) + "\",\"speed\":\"" + String(SPEED);
+  status += "\"leftMotor\":\"" + String(LEFT_MOTOR_STATE) + "\",\"rightMotor\":\"" + String(RIGHT_MOTOR_STATE) +
+            "\",\"speed\":\"" + String(SPEED);
   status += "\"},";
   status += "\"motorStates\":{";
-  status += "\"forward\":\"" + String(MOTOR_FORWARD) + "\",\"backward\":\"" + String(MOTOR_BACKWARD) + "\",\"stop\":\"" + String(MOTOR_STOP);
+  status += "\"forward\":\"" + String(MOTOR_FORWARD) + "\",\"backward\":\"" + String(MOTOR_BACKWARD) +
+            "\",\"stop\":\"" + String(MOTOR_STOP);
   status += "\"},";
   status += "\"motorSpeeds\":{";
   status += "\"minSpeed\":\"" + String(MIN_SPEED) + "\",\"maxSpeed\":\"" + String(MAX_SPEED);

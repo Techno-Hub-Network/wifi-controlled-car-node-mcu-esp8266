@@ -9,19 +9,33 @@ extern const int MOTOR_STOP, MOTOR_FORWARD, MOTOR_BACKWARD, MIN_SPEED, MAX_SPEED
 extern int SPEED, LEFT_MOTOR_STATE, RIGHT_MOTOR_STATE;
 
 void setupMotorController();
+
 void spinLeftMotor();
-void setForwardLeftMotor(int speed);
-void setBackwardLeftMotor(int speed);
+
+void setForwardLeftMotor(int newSpeed);
+
+void setBackwardLeftMotor(int newSpeed);
+
 void spinRightMotor();
-void setForwardRightMotor(int speed);
-void setBackwardRightMotor(int speed);
+
+void setForwardRightMotor(int newSpeed);
+
+void setBackwardRightMotor(int newSpeed);
+
 void stopLeftMotor();
+
 void stopRightMotor();
+
 void stopMovement();
-void setMoveForward(int speed);
-void setMoveBackward(int speed);
-void setTurnLeft(int speed);
-void setTurnRight(int speed);
-void setSpeed(int speed);
+
+void setMoveForward(int newSpeed);
+
+void setMoveBackward(int newSpeed);
+
+void setTurnLeft(int newSpeed);
+
+void setTurnRight(int newSpeed);
+
+void setSpeed(int newSpeed);
 
 #endif // MOTOR_CONTROLLER_H
